@@ -40,6 +40,20 @@
 
       ga('create', 'UA-54470700-1', 'auto');
       ga('send', 'pageview');
+
+      /**
+      * Function that tracks a click on an outbound link in Google Analytics.
+      * This function takes a valid URL string as an argument, and uses that URL string
+      * as the event label.
+      */
+      var trackOutboundLink = function(url) {
+         ga('send', 'event', 'outbound', 'click', url, {'hitCallback':
+           function () {
+           document.location = url;
+           }
+         });
+      }
+
     </script>
 
   </head>
@@ -84,9 +98,9 @@
          <footer>
           <center>
             <ul class="soc">
-              <li><a class="soc-github" href="http://www.github.com/akittiudom14"></a></li>
-              <li><a class="soc-linkedin" href="http://www.linkedin.com/in/akittiudom"></a></li>
-              <li><a class="soc-email1 soc-icon-last" href="mailto:akittiudom@gmail.com"></a></li>
+              <li><a class="soc-github" href="http://www.github.com/akittiudom14" onclick='trackOutboundLink('http://www.github.com/akittiudom14'); return false;'></a></li>
+              <li><a class="soc-linkedin" href="http://www.linkedin.com/in/akittiudom" onclick='trackOutboundLink('http://www.linkedin.com/in/akittiudom'); return false;'></a></li>
+              <li><a class="soc-email1 soc-icon-last" href="mailto:akittiudom@gmail.com" onclick='trackOutboundLink('mailto:akittiudom@gmail.com'); return false;'></a></li>
             </ul>
           </center>
         </footer>
